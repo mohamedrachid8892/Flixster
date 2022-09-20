@@ -1,8 +1,8 @@
 package com.example.flixster
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
@@ -13,15 +13,19 @@ import org.json.JSONException
 private const val NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=97f92f3145d9f64a51d2abdc2a9823c1"
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
+
     private val movies = mutableListOf<Movie>()
     private lateinit var rvMovies: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         rvMovies = findViewById(R.id.rvMovies)
 
-        val movieAdapter = MovieAdapter(this, movies)
+        val orientation = resources.configuration.orientation
+
+        val movieAdapter = MovieAdapter(this, movies, orientation)
         rvMovies.adapter = movieAdapter
         rvMovies.layoutManager = LinearLayoutManager(this)
 
@@ -44,7 +48,6 @@ class MainActivity : AppCompatActivity() {
                     Log.e(TAG, "Encountered exception: $e")
                 }
             }
-
         })
     }
 }
