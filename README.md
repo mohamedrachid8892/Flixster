@@ -28,6 +28,8 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 I had trouble using Glide to make the corners of the images round. It was placing a lot of padding between images instead of making the corners round.
 
+Also, I changed the minimum rating requirement to auto-play a video to 7.5 in order to demonstrate functionality. All movies currently being shown have more than a 5 average rating. 
+
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
 - [Glide](https://github.com/bumptech/glide) - Image loading and caching library for Android
