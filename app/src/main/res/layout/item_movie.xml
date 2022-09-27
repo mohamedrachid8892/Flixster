@@ -22,7 +22,8 @@
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="TextView"
+        android:text=""
+        android:textColor="@color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivPoster"
@@ -37,8 +38,20 @@
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:maxLines="5"
-        android:text="TextView"
+        android:textColor="@color/white"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivPoster"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <ImageView
+        android:id="@+id/playButton"
+        android:layout_width="46dp"
+        android:layout_height="27dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPoster"
+        app:layout_constraintEnd_toEndOf="@+id/ivPoster"
+        app:layout_constraintStart_toStartOf="@+id/ivPoster"
+        app:layout_constraintTop_toTopOf="@+id/ivPoster"
+        app:srcCompat="@drawable/youtube_social_icon_red" />
 </androidx.constraintlayout.widget.ConstraintLayout>

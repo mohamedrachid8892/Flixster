@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 const val MOVIE_EXTRA = "MOVIE_EXTRA"
 private const val TAG = "MovieAdapter"
@@ -42,23 +45,27 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
         }
 
         fun bind(movie: Movie) {
+            val movieRating = movie.voteAverage
             tvTitle.text = movie.title
             tvOverview.text = movie.overview
+            val radius = 30
             if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 Glide.with(context)
-                    .load(R.drawable.loading)
+                    .load(movie.backdropImageUrl)
                     .placeholder(R.drawable.loading)
                     .error(R.drawable.image_not_found)
-                    .load(movie.backdropImageUrl)
                     .into(ivPoster)
             }
             else {
                 Glide.with(context)
-                    .load(R.drawable.loading)
+                    .load(movie.posterImageUrl)
                     .placeholder(R.drawable.loading)
                     .error(R.drawable.image_not_found)
-                    .load(movie.posterImageUrl)
                     .into(ivPoster)
+            }
+            if (movieRating >= 7.5) {
+                val playButton = itemView.findViewById<ImageView>(R.id.playButton)
+                playButton.visibility = View.VISIBLE
             }
         }
 
